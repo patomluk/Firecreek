@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-11-24T14:00:06.086Z",
+    "end": "2021-11-24T14:00:35.584Z",
+    "duration": 29498,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "44a60c6d-fa88-4a48-9495-ff4cc5cb70d7",
+      "title": "",
+      "fullFile": "cypress/integration/firecreek/Acceptance_Criteria.js",
+      "file": "cypress/integration/firecreek/Acceptance_Criteria.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8665df45-6597-485e-a198-27bd287723e6",
+          "title": "QA Automation Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Add a property with a multiple rentable units",
+              "fullTitle": "QA Automation Test Add a property with a multiple rentable units",
+              "timedOut": null,
+              "duration": 25503,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_login_keywords.default.inputUsername(fixture.username);\n_login_keywords.default.inputPassword(fixture.password);\n_login_keywords.default.clickButtonLogin();\ncy.url().should('eq', fixture.dashboardUrl);\n_left_hand_panel_keywords.default.verifyPersonalName(fixture.personalName);\n_left_hand_panel_keywords.default.clickMenuProperties();\n_properties_keywords.default.clickButtonAddProperties();\n_add_properties_keywords.default.clickSeleteMultipleUnit();\nconst propertiesName = randomstring.generate(10);\n_add_properties_keywords.default.inputPropertiesName(propertiesName);\n_add_properties_keywords.default.selectPropertiesOwner(fixture.add_properties.propertiesOwner);\nconst address1 = randomstring.generate(5);\nconst address2 = randomstring.generate(5);\nconst postcode = randomstring.generate({\n  length: 5,\n  charset: 'numeric'\n});\nconst countUnit = Math.floor(Math.random() * 10) + 1;\n_add_properties_keywords.default.inputAddress1(address1);\n_add_properties_keywords.default.inputAddress2(address2);\n_add_properties_keywords.default.inputPostcode(postcode);\n_add_properties_keywords.default.inputCity(fixture.add_properties.city);\n_add_properties_keywords.default.inputCounty(fixture.add_properties.county);\n_add_properties_keywords.default.verifyCheckedMange();\n_add_properties_keywords.default.inputUnitCount(countUnit);\n_add_properties_keywords.default.clickButtonNextPage();",
+              "err": {},
+              "uuid": "679ee5de-e9c9-400d-a618-dd0bd1cba311",
+              "parentUUID": "8665df45-6597-485e-a198-27bd287723e6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "679ee5de-e9c9-400d-a618-dd0bd1cba311"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 25503,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.1"
+    }
+  }
+}

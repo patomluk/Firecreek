@@ -1,0 +1,18 @@
+{
+    "fixturesFolder" : "cypress/fixtures/aut",
+    "responseTimeout" : 60000,
+    "viewportWidth" : 1920,
+    "viewportHeight" : 1080,
+    "video" : false,
+    "reporter" : "mochawesome",
+    "reporterOption" : {
+        "charts" : true,
+        "overwrite" : false,
+        "html" : true,
+        "json" : true,
+        "reporterDit" : "mochawesome-report"
+    },
+    "env" : {
+        "testenv" : "aut"
+    }
+}
