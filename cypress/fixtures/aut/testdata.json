@@ -6,9 +6,19 @@
     "personalName" : "Cypress Tester 1",
 
     "add_properties" : {
+      "propertiesName" : "1at",
+      "address1" : "cypress",
+      "address2" : "test",
       "propertiesOwner" : "Owner 1 - Sansiri",
-      "city" : "London",
-      "county" : "England"
+      "city" : "Oxford",
+      "county" : "England",
+      "postcode" : "12123",
+      "countUnit" : 3
+    },
+    "unit_setting" : {
+      "unit_type" : "Flat",
+      "manage" : "Cypress Tester 1",
+      "agent" : "Real Agency"
     }
 }
   

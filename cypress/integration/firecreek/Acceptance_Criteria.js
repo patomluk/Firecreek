@@ -1,7 +1,10 @@
 import LoginPages from '../../../cypress/support/keywords/login_keywords'
 import LeftHandPanel from '../../../cypress/support/keywords/left_hand_panel_keywords'
-import PropertiesPage from '../../../cypress/support/keywords/properties_keywords'
+import Properties from '../../../cypress/support/keywords/properties_keywords'
 import AddProperties from '../../support/keywords/add_properties_keywords'
+import UnitSetting from '../../support/keywords/unit_setting_keywords'
+import AddSuccess from '../../support/keywords/add_success_keywords'  
+
 let fixture;
 var randomstring = require("randomstring");
 
@@ -9,7 +12,7 @@ before(() => {
     cy.fixture('testdata.json').then(function (data) {
         fixture = data
         cy.visit(fixture.webUrl)
-        cy.url().should('include','staging.arthuronline.co.uk')
+        cy.url().should('include','arthuronline.co.uk')
     })
 })
 
@@ -28,24 +31,29 @@ describe(`QA Automation Test`, function () {
         cy.url().should('eq',fixture.dashboardUrl)
         LeftHandPanel.verifyPersonalName(fixture.personalName)
         LeftHandPanel.clickMenuProperties()
-        PropertiesPage.clickButtonAddProperties()
+        Properties.clickButtonAddProperties()
         AddProperties.clickSeleteMultipleUnit()
-        const propertiesName = randomstring.generate(10)
-        AddProperties.inputPropertiesName(propertiesName)
+        AddProperties.inputPropertiesName(fixture.add_properties.propertiesName)
         AddProperties.selectPropertiesOwner(fixture.add_properties.propertiesOwner)
-        const address1 = randomstring.generate(5)
-        const address2 = randomstring.generate(5)
-        const postcode = randomstring.generate({length: 5,charset: 'numeric'})
-        const countUnit = Math.floor(Math.random() * 10) + 1
+        let address1 = randomstring.generate(8)
+        let address2 = randomstring.generate(8)
         AddProperties.inputAddress1(address1)
         AddProperties.inputAddress2(address2)
-        AddProperties.inputPostcode(postcode)
+        AddProperties.inputPostcode(fixture.add_properties.postcode)
         AddProperties.inputCity(fixture.add_properties.city)
         AddProperties.inputCounty(fixture.add_properties.county)
         AddProperties.verifyCheckedMange()
-        AddProperties.inputUnitCount(countUnit)
+        AddProperties.inputUnitCount(fixture.add_properties.countUnit)
         AddProperties.clickButtonNextPage()
-        
+        UnitSetting.verifyUnit(fixture.add_properties.countUnit)
+        UnitSetting.selectUnitType(fixture.unit_setting.unit_type)
+        UnitSetting.selectManager(fixture.unit_setting.manage)
+        UnitSetting.selectAgency(fixture.unit_setting.agent)
+        UnitSetting.clickButtonApplyall()
+        UnitSetting.clickButtonAddProperties()
+        AddSuccess.verifyHeader()
+        AddSuccess.verifyPropertyreference(fixture.add_properties.propertiesName)
+        LeftHandPanel.clickMenuProperties()
     })
 
 })

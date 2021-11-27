@@ -1,6 +1,6 @@
 import { propertiesElement } from "../pageObjects/properties_element";
 
-class PropertiesPage {
+class Properties {
     clickButtonAddProperties(){
         const button = cy.get(propertiesElement.btn_add_properties)
         button.click()
@@ -9,4 +9,4 @@ class PropertiesPage {
 
 }
 
-export default new PropertiesPage();
+export default new Properties();

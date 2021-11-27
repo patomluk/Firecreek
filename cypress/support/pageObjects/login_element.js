@@ -1,5 +1,5 @@
 export const loginElement = {
-    txt_username : '#UserEmail',
-    txt_password : '.password > input',
+    txt_username : 'input#UserEmail',
+    txt_password : 'input#UserPassword',
     btn_login : '.submit > input'
 }
