@@ -4,11 +4,17 @@ import Properties from '../../../cypress/support/keywords/properties_keywords'
 import AddProperties from '../../support/keywords/add_properties_keywords'
 import UnitSetting from '../../support/keywords/unit_setting_keywords'
 import AddSuccess from '../../support/keywords/add_success_keywords'  
+import Tasks from '../../support/keywords/tasks_keywords'
+import AddTask from '../../support/keywords/add_tasks_keywords'
 
 let fixture;
 var randomstring = require("randomstring");
+var propertiesName = randomstring.generate(8)
+const timeElapsed = Date.now();
+const today = new Date(timeElapsed);
 
-before(() => {
+beforeEach(() => {
+    Cypress._savedData = {}
     cy.fixture('testdata.json').then(function (data) {
         fixture = data
         cy.visit(fixture.webUrl)
@@ -33,10 +39,10 @@ describe(`QA Automation Test`, function () {
         LeftHandPanel.clickMenuProperties()
         Properties.clickButtonAddProperties()
         AddProperties.clickSeleteMultipleUnit()
-        AddProperties.inputPropertiesName(fixture.add_properties.propertiesName)
+        AddProperties.inputPropertiesName(propertiesName)
         AddProperties.selectPropertiesOwner(fixture.add_properties.propertiesOwner)
-        let address1 = randomstring.generate(8)
-        let address2 = randomstring.generate(8)
+        var address1 = randomstring.generate(8)
+        var address2 = randomstring.generate(8)
         AddProperties.inputAddress1(address1)
         AddProperties.inputAddress2(address2)
         AddProperties.inputPostcode(fixture.add_properties.postcode)
@@ -52,8 +58,29 @@ describe(`QA Automation Test`, function () {
         UnitSetting.clickButtonApplyall()
         UnitSetting.clickButtonAddProperties()
         AddSuccess.verifyHeader()
-        AddSuccess.verifyPropertyreference(fixture.add_properties.propertiesName)
+        AddSuccess.verifyPropertyreference(propertiesName)
         LeftHandPanel.clickMenuProperties()
+        Properties.inputSearchProperties(propertiesName)
+        Properties.verifyPropertiesAfterAdd(propertiesName)
     })
-
+    it.only(`Add a task related to above property`, () => {
+        LoginPages.inputUsername(fixture.username)
+        LoginPages.inputPassword(fixture.password)
+        LoginPages.clickButtonLogin()
+        cy.url().should('eq',fixture.dashboardUrl)
+        LeftHandPanel.verifyPersonalName(fixture.personalName)
+        LeftHandPanel.clickMenuTasks()
+        Tasks.clickButtonAddTasks()
+        AddTask.inputSearchProperties(propertiesName)
+        AddTask.clickPropertiesAfterSearch()
+        AddTask.inputTasksDescription('Test')
+        AddTask.inputDueDate(today.toLocaleDateString())
+        AddTask.inputTime('23:00')
+        AddTask.inputAssign(fixture.personalName)
+        AddTask.selectTasksType('Maintenance')
+        AddTask.clickButtonAddTask()
+        Tasks.verifyHeaderTaskRelated(propertiesName)
+        Tasks.verifyRelationRelated(propertiesName)
+        Tasks.clickButtonAddTasks()
+    })
 })

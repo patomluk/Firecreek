@@ -13,6 +13,14 @@ class LeftHandPanel {
                 expect($handle.text()).to.eql(value)
             })
     }
+
+    clickMenuTasks(){
+        const menuDropdown = cy.get(leftHandPanelElement.manuTasks)
+        menuDropdown.click()
+        return this
+    }
+
+    
 }
 
 export default new LeftHandPanel();
