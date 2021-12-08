@@ -5,12 +5,23 @@
   "main": "index.js",
   "dependencies": {
     "cypress": "^9.1.0",
-    "update": "^0.7.4",
+    "randomstring": "^1.2.1",
     "upgrade": "^1.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cypress-file-upload": "^5.0.8",
+    "cypress-mochawesome-reporter": "^2.3.0",
+    "cypress-wait-until": "^1.7.2",
+    "mochawesome": "^7.0.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^6.0.1",
+    "update": "^0.7.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress" : "cypress",
+    "cypress_aut" : "cypress run --config-file cypress_aut.json",
+    "cypress_aut_report": "cypress run --config-file cypress_aut.json --reporter mochawesome --spec cypress/integration/firecreek/Acceptance_Criteria.js"
   },
   "repository": {
     "type": "git",

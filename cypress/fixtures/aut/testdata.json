@@ -1,0 +1,24 @@
+{
+    "webUrl": "https://staging.arthuronline.co.uk/login?X-MODE=QA-eW91LXdpbi1ub3RoaW5nCg",
+    "username": "robot+tester_1@firecreekweb.com",
+    "password": "Qwerty66#",
+    "dashboardUrl" : "https://staging.arthuronline.co.uk/robottester/dashboards/index",
+    "personalName" : "Cypress Tester 1",
+
+    "add_properties" : {
+      "propertiesName" : "1at",
+      "address1" : "cypress",
+      "address2" : "test",
+      "propertiesOwner" : "Owner 1 - Sansiri",
+      "city" : "Oxford",
+      "county" : "England",
+      "postcode" : "12123",
+      "countUnit" : 3
+    },
+    "unit_setting" : {
+      "unit_type" : "Flat",
+      "manage" : "Cypress Tester 1",
+      "agent" : "Real Agency"
+    }
+}
+  
