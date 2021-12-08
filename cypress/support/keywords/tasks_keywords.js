@@ -21,6 +21,26 @@ class Tasks {
         })
     }
 
+    getTaskID(){
+        const txt = cy.get(tasksElement.txt_tasks_id, {timeout  : 10000})
+        txt.then(($handle) => {
+            cy.wrap($handle.text().replace("Task / ", "")).as('taskId')
+        })
+    }
+
+    verifyTaskId(){
+        const txt = cy.get(tasksElement.txt_related, {timeout  : 10000})
+        txt.should(($handle) => {
+            expect($handle.text()).to.include(value)
+        })
+    }
+
+    inputSearchTasks(value){
+        const field = cy.get(tasksElement.txt_search_tasks)
+        field.type(value+'{enter}')
+        return this
+
+    }
 }
 
 export default new Tasks();

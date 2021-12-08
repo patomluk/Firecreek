@@ -30,7 +30,7 @@ describe(`QA Automation Test`, function () {
         cy.url().should('eq',fixture.dashboardUrl)
         LeftHandPanel.verifyPersonalName(fixture.personalName)
     })
-    it.only(`Add a property with a multiple rentable units`, () => {
+    it(`Add a property with a multiple rentable units`, () => {
         LoginPages.inputUsername(fixture.username)
         LoginPages.inputPassword(fixture.password)
         LoginPages.clickButtonLogin()
@@ -63,7 +63,7 @@ describe(`QA Automation Test`, function () {
         Properties.inputSearchProperties(propertiesName)
         Properties.verifyPropertiesAfterAdd(propertiesName)
     })
-    it.only(`Add a task related to above property`, () => {
+    it(`Add a task related to above property`, () => {
         LoginPages.inputUsername(fixture.username)
         LoginPages.inputPassword(fixture.password)
         LoginPages.clickButtonLogin()
@@ -79,8 +79,13 @@ describe(`QA Automation Test`, function () {
         AddTask.inputAssign(fixture.personalName)
         AddTask.selectTasksType('Maintenance')
         AddTask.clickButtonAddTask()
+        Tasks.getTaskID()
         Tasks.verifyHeaderTaskRelated(propertiesName)
         Tasks.verifyRelationRelated(propertiesName)
-        Tasks.clickButtonAddTasks()
+        LeftHandPanel.clickMenuTasks()
+        cy.get('@taskId').then(text => {
+            Tasks.inputSearchTasks(text)
+        })
+        LeftHandPanel.clickMenuNoti()
     })
 })

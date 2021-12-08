@@ -2,7 +2,7 @@ import { leftHandPanelElement } from "../pageObjects/leftHandPanel_element";
 
 class LeftHandPanel {
     clickMenuProperties(){
-        const menuDropdown = cy.get(leftHandPanelElement.manuProperties)
+        const menuDropdown = cy.get(leftHandPanelElement.menuProperties)
         menuDropdown.click()
         return this
     }
@@ -15,12 +15,16 @@ class LeftHandPanel {
     }
 
     clickMenuTasks(){
-        const menuDropdown = cy.get(leftHandPanelElement.manuTasks)
+        const menuDropdown = cy.get(leftHandPanelElement.menuTasks)
         menuDropdown.click()
         return this
     }
 
-    
+    clickMenuNoti(){
+        const menuDropdown = cy.get(leftHandPanelElement.menuNoti)
+        menuDropdown.click()
+        return this
+    }    
 }
 
 export default new LeftHandPanel();
